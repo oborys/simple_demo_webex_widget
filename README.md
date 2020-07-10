@@ -39,12 +39,9 @@ docker-compose up
 Solution scheme
 ![](img/solution_scheme.png)
 
-**Paste it into the file `views.py` variable `bearer`**
 
 In this repo, you can find useful Dockerize solution with which you can interact using REST API 
 ![](img/rest_api_demo.png)
-
-> If you run the app at 15:14 bot report will be sent at 20:14
 
 **Other Useful links**
 
