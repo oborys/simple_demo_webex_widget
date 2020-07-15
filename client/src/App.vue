@@ -133,7 +133,7 @@
 
       openWidget() {
 
-        async function main(subject, webex_name) {
+        async function main(subject, webex_name, email) {
         try {
           console.log("subject ", subject)
           const response = await axios.post('http://localhost:5000/', {"subject": subject, "name": webex_name,"tokenTime": "2"})
@@ -151,7 +151,7 @@
           }
 
         }
-        main(this.subject, this.webex_name)
+        main(this.subject, this.webex_name, this.email)
       },
 
       // You can use sip addresses below for testing (automatically enabled a call):
