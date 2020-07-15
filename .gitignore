@@ -3,3 +3,5 @@
 client/node_modules/
 /server/sent.js
 /server/venv/
+/client/dist/
+/server/__pycache__/

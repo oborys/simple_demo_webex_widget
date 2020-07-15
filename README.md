@@ -1,9 +1,9 @@
 # Webex widget: simple demo
 
-This repo is simple demo of Webex widget, include:
+This repo is a simple demo of Webex widget, include:
  
 - [x] vue UI part where users can type in personal data to create conversation or make a call
-- [x] Dockerize server app that give you J(SON) W(eb) T(oken)
+- [x] Dockerize server app that gives you J(SON) W(eb) T(oken)
 - [x] in this repo, you can find split microservices, with which you can interact using REST API
  
 
@@ -30,10 +30,22 @@ For which purpose you can use it:
 git clone https://github.com/oborys/simple_demo_webex_widget.git
 cd simple_demo_webex_widget
 ```
-Open files `server/webex_cred` and paste your variable 
+
+Create Webex Guest Issuer [https://developer.webex.com/my-apps/new](https://developer.webex.com/my-apps/new)
+
+Open files `server/webex_cred` and paste your variable `Guest Issuer ID` as `WEBEX_TEAMS_ISSUER_ID` and `Shared Secret` as `WEBEX_TEAMS_ISSUER_SECRET`
 
 ```
 docker-compose up
+```
+
+Ensure the app is running in the browser
+[http://localhost:80](http://localhost:80) 
+
+Bring down the containers:
+
+```
+docker-compose stop
 ```
 
 Solution scheme
@@ -43,6 +55,9 @@ Solution scheme
 In this repo, you can find useful Dockerize solution with which you can interact using REST API 
 ![](img/rest_api_demo.png)
 
+#### Online demo
+- [https://webex-widget.herokuapp.com/](https://webex-widget.herokuapp.com/)
+
 **Other Useful links**
 
-- [How To Build and Deploy a Flask Application Using Docker on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-18-04)
+- [https://developer.webex.com/docs/guest-issuer](https://developer.webex.com/docs/guest-issuer)

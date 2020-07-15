@@ -13,6 +13,7 @@
   "dependencies": {
     "@webex/widget-space": "^0.2.108",
     "express": "^4.17.1",
+    "http-server": "^0.12.3",
     "jsonwebtoken": "^8.5.1",
     "request-promise-native": "^1.0.8",
     "vue": "^2.5.11",
@@ -39,6 +40,7 @@
     "jsxapi": "^5.0.1",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
+    "uglifyjs-webpack-plugin": "^1.3.0",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",

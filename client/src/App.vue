@@ -57,12 +57,7 @@
               v-if="!progress">
               Call
             </v-btn>
-            <!--<v-btn-->
-              <!--@click="close"-->
-              <!--:disabled="!connection"-->
-              <!--v-if="!progress">-->
-              <!--Close connection-->
-            <!--</v-btn>-->
+
 
           </v-row>
         </v-container>
@@ -74,17 +69,13 @@
 
 <script>
 
+  const axios = require('axios')
 
-  //const jsxapi = require('jsxapi');
-  const jwt = require('jsonwebtoken');
-  //const request = require('request-promise-native');
 
   export default {
     data() {
       return {
         // the block where we initialize the variables for further reassignment in functions
-        WEBEX_TEAMS_ISSUER_ID: 'Y2lzY29zcGFyazovL3VzL09SR0FOSVpBVElPTi80N2MxYjAwYi1jYTg4LTQzNzEtYTdhOS1hNmE4ODliOGE0MzM',
-        WEBEX_TEAMS_ISSUER_SECRET: 'emmCcE8yO+Kf6GnXPFlnGh762ArNFFrofFDaqcQjPYk=',
         jwtToken: null,
         email: '',
         subject: '',
@@ -110,66 +101,57 @@
 
     },
     methods: {
-      // when users clicked on the 'submit' button function below will be called
-      submit() {
-        this.initConnection();
-      },
 
-      // New style API
-      setname() {
-        if (this.wsconnection) {
-          this.wsconnection.Config.SystemUnit.Name.set(this.newSystemName);
-          // xConfiguration SystemUnit Name: "Kit 006"
-        }
-      },
       getJWTtoken (ticketDuration) {
-        // ticketDuration in hours
-      const expiration = Math.floor(new Date() / 1000) + 3600 * ticketDuration
-      // Create a JWT payload object
-      // 'sub' (subject) will be used to create the Webex Teams user email (sub@org-uuid)
-      // 'name' will be the user's display name
-      const payload = {
-      'sub': this.subject,
-      'name': this.webex_name,
-      'iss': this.WEBEX_TEAMS_ISSUER_ID,
-      'exp': expiration
-        };
 
-      // Create a base64 encoded buffer from the Guest Issuer shared secret
-      const encoded = Buffer.from(this.WEBEX_TEAMS_ISSUER_SECRET, 'base64');
-
-      // Sign the JWT object using the encoded secret
-      this.jwtToken = jwt.sign(payload, encoded, { algorithm: 'HS256', noTimestamp: true });
-
-      console.log(this.jwtToken);
       },
+
+      // when users clicked on the 'call' or 'connect' button functions below will be called
+
       createWidget() {
-        if (this.jwtToken === null) {
-          this.getJWTtoken(1)
-        }
 
-
-      var widgetEl = document.getElementById('my-space-widget');
+        async function main(subject, webex_name, email) {
+        try {
+          console.log("subject ", subject)
+          const response = await axios.post('http://localhost:5000/', {"subject": subject, "name": webex_name,"tokenTime": "2"})
+          console.log(response.data)
+          var widgetEl = document.getElementById('my-space-widget');
         // Init a new widget
-        webex.widget(widgetEl).spaceWidget({
-          guestToken: this.jwtToken,
-          destinationType: 'email',
-          destinationId: this.email
-        });
+          webex.widget(widgetEl).spaceWidget({
+            guestToken: response.data,
+            destinationType: 'email',
+            destinationId: email
+          });
+        }
+        catch (error) {
+          console.log(error)
+          }
 
+        }
+        main(this.subject, this.webex_name, this.email)
       },
+
       openWidget() {
-        if (this.jwtToken === null) {
-          this.getJWTtoken(1)
-        }
-        var widgetEl = document.getElementById('my-space-widget');
+
+        async function main(subject, webex_name) {
+        try {
+          console.log("subject ", subject)
+          const response = await axios.post('http://localhost:5000/', {"subject": subject, "name": webex_name,"tokenTime": "2"})
+          console.log(response.data)
+          var widgetEl = document.getElementById('my-space-widget');
         // Init a new widget
-        webex.widget(widgetEl).spaceWidget({
-          guestToken: this.jwtToken,
-          destinationType: 'email',
-          destinationId: this.email,
-          startCall: true
-        });
+          webex.widget(widgetEl).spaceWidget({
+            guestToken: response.data,
+            destinationType: 'email',
+            destinationId: email
+          });
+        }
+        catch (error) {
+          console.log(error)
+          }
+
+        }
+        main(this.subject, this.webex_name)
       },
 
       // You can use sip addresses below for testing (automatically enabled a call):

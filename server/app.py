@@ -9,7 +9,7 @@ import json
 import math
 import os
 import configparser
-#import jwt
+import jwt
 
 
 # read variables from config
@@ -49,9 +49,6 @@ def createToken():
     # Use this token in application
     return(jwtToken.decode('utf-8'))
 
-@app.route('/', methods=['GET'])
-def get():
-    return("Works")
 
 if __name__ == '__main__':
     app.run()
