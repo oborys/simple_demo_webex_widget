@@ -143,7 +143,8 @@
           webex.widget(widgetEl).spaceWidget({
             guestToken: response.data,
             destinationType: 'email',
-            destinationId: email
+            destinationId: email,
+            startCall: true
           });
         }
         catch (error) {
