@@ -156,7 +156,7 @@
       },
 
       // You can use sip addresses below for testing (automatically enabled a call):
-      // 111@bjn.vc, fireplace@ivr.vc, goldfish@selfie.vc, halloween@ivr.vc, havnen@expressway.dk
+      // 9791@conf.dfn.de, 111@bjn.vc, fireplace@ivr.vc, goldfish@selfie.vc, halloween@ivr.vc, havnen@expressway.dk
 
     }
   }

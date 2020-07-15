@@ -48,12 +48,15 @@ Bring down the containers:
 docker-compose stop
 ```
 
-Solution scheme
+## Solution scheme
 ![](img/solution_scheme.png)
 
 
 In this repo, you can find useful Dockerize solution with which you can interact using REST API 
 ![](img/rest_api_demo.png)
+
+After enter all data and push **Call** button, call will enable
+![](img/call_demo.png)
 
 #### Online demo
 - [https://webex-widget.herokuapp.com/](https://webex-widget.herokuapp.com/)
