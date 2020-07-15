@@ -55,7 +55,8 @@ docker-compose stop
 In this repo, you can find useful Dockerize solution with which you can interact using REST API 
 ![](img/rest_api_demo.png)
 
-After enter all data and push **Call** button, call will enable
+After entering all data and push the **Call** button, the call will enable. **Connect** button will open widget with chat and other features like screen sharing, meeting, etc
+
 ![](img/call_demo.png)
 
 #### Online demo
