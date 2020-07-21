@@ -48,6 +48,26 @@ Bring down the containers:
 docker-compose stop
 ```
 
+### Rebuild containers
+
+Get a list of running containers
+```
+docker ps -a
+```
+Choose CONTAINER ID with name `simple_demo_webex_widget_flask`, `simple_demo_webex_widget_vue`
+then stop docker conteiners
+```
+docker stop [CONTAINER ID]
+```
+and delete it
+```
+docker rm [CONTAINER ID]
+```
+Make changes in code and then run 
+```
+docker-compose up
+```
+
 ## Solution scheme
 ![](img/solution_scheme.png)
 
